@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<p>Welcome, {{ session.fullname }}.</p>
+<form method="post" action="{{ url_for('auth.logout') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <button type="submit">Logout</button>
+</form>
+{% endblock %}
