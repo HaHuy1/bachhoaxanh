@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Mini-Netflix</h1>
+{% if session.user_id %}
+  <p>Signed in as {{ session.fullname }}</p>
+  <form method="post" action="{{ url_for('auth.logout') }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit">Logout</button>
+  </form>
+{% else %}
+  <a href="{{ url_for('auth.login') }}">Login</a>
+  <a href="{{ url_for('auth.register') }}">Register</a>
+{% endif %}
+{% endblock %}
